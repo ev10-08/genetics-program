@@ -1,0 +1,138 @@
+#include <iostream>
+
+using namespace std;
+
+
+void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck);
+void motherData (string& momOne, string& momTwo, int& momCheck);
+void fatherData (string& dadOne, string& dadTwo, int& dadCheck);
+void programCheck (int& programCompletion);
+
+int main()
+{
+    int dadCheck, momCheck, programCompletion;
+    string momOne, momTwo, dadOne, dadTwo;
+    
+    cout << "-------------------------------" << endl;
+    cout << "| This program will determine |" << endl;
+    cout << "| the possibility of a childs |" << endl;
+    cout << "|   colorblindness via using  |" << endl;
+    cout << "|   parent's X genotype's as  |" << endl;
+    cout << "| colorblindness is linked to |" << endl;
+    cout << "| the parent's X chromosomes. |" << endl;
+    cout << "-------------------------------\n" << endl;
+    
+    while (programCompletion != 2) {
+       motherData (momOne, momTwo, momCheck);
+       fatherData (dadOne, dadTwo, dadCheck);
+       punnetDisplay (dadOne, dadTwo, momOne, momTwo, momCheck, dadCheck);
+       programCheck (programCompletion); 
+    } 
+}
+
+void motherData (string& momOne, string& momTwo, int& momCheck) {
+    cout << "Is the mother Colorblind, not Colorblind, or a Carrier?\n\n1 - Colorblind\n2 - Not Colorblind\n3 - Carrier\n";
+    cin >> momCheck;
+    while (!momCheck or momCheck > 3 or momCheck < 1) { //invalid input/fail check for air temperature
+        cout << "Invalid input, please give the data for the mother.\n\n1 - Colorblind\n2 - Not Colorblind\n3 - Carrier\n";
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cin >> momCheck;
+    }
+    if (momCheck == 1) {
+        momOne = "Xa";
+        momTwo = "Xa";
+    } else {
+        if (momCheck == 2) {
+          momOne ="XA";
+          momTwo ="XA";
+        } else {
+           momOne ="XA";
+           momTwo ="Xa";
+        }
+    }
+    
+}
+
+void fatherData (string& dadOne, string& dadTwo, int& dadCheck) {
+    cout << "Is the father Colorblind or not?\n1 - Colorblind\n2 - Not Colorblind\n";
+    cin >> dadCheck;
+    while (!dadCheck or dadCheck > 2 or dadCheck < 1) { //invalid input/fail check for air temperature
+        cout << "Invalid input, please give the data for the father.\n\n1 - Colorblind\n2 - Not Colorblind\n";
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cin >> dadCheck;
+    }
+    if (dadCheck == 1) {
+        dadOne = "Xa";
+        dadTwo = "Y";
+    } else {
+        dadOne = "XA";
+        dadTwo = "Y" ;
+    }
+}
+
+void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck) {
+    cout << "\n       "<< dadOne<< "             " << dadTwo << "       " << endl;
+    cout << "-------------------------------" << endl;
+    cout << "|              |              |" << endl;
+    cout << "|              |              |" << endl;
+    cout << "|     " << dadOne << "-" << momOne << "    |     " << momOne << "-" <<dadTwo << "     | " << momOne << endl;
+    cout << "|              |              |" << endl;
+    cout << "|              |              |" << endl;
+    cout << "-------------------------------" << endl;
+    cout << "|              |              |" << endl;
+    cout << "|              |              |" << endl;
+    cout << "|     " << dadOne << "-" << momTwo << "    |     " << momTwo << "-" << dadTwo << "     | " << momTwo << endl;
+    cout << "|              |              |" << endl;
+    cout << "|              |              |" << endl;
+    cout << "-------------------------------" << endl;
+    
+    if (momCheck == 1 && dadCheck == 1) {
+        cout << "\nColorblind Male - 50%\n";
+        cout << "Colorblind Female - 50%";
+    } else {
+        if (momCheck == 1 && dadCheck == 2) {
+            cout << "\nColorblind Male - 50%\n";
+            cout << "Carrier Female - 50%";
+        } else {
+            if (momCheck == 2 && dadCheck == 1) {
+                cout << "\nNon-Colorblind Male - 50%\n";
+                cout << "Carrier Female - 50%";
+            } else {
+                if (momCheck == 2 && dadCheck == 2) {
+                    cout << "\nNon-Colorblind Male - 50%\n";
+                    cout << "Non-Colorblind Female - 50%";
+                } else {
+                    if (momCheck == 3 && dadCheck == 1) {
+                        cout << "\nNon-Colorblind Male - 25%";
+                        cout << "\nCarrier Female - 25%";
+                        cout << "\nColorblind Male - 25%";
+                        cout << "\nColorblind Female - 25%";
+                    } else {
+                        if (momCheck == 3 && dadCheck == 2) {
+                            cout << "\nNon-Colorblind Male - 25%";
+                            cout << "\nNon-Colorblind Female - 25%";
+                            cout << "\nColorblind Male - 25%";
+                            cout << "\nCarrier Female - 25%";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void programCheck (int& programCompletion) {
+    cout << "\n\nDo you want to use the program again?\n\n1 - Yes\n2 - No\n";
+    cin >> programCompletion;
+    while (!programCompletion or programCompletion > 2 or programCompletion < 1) {
+        cout << "Invalid Input. Would you like to use the program again?\n\n1 - Yes\n2 - No";
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cin >> programCompletion;
+    }
+}
+
+
+
