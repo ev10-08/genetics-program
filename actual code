@@ -3,10 +3,10 @@
 using namespace std;
 
 //declaring all of the
-void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck); //determined genotypes and phenotypes based off user inputs
-void motherData (string& momOne, string& momTwo, int& momCheck); //first bit of user input gathered for the program for the mothers data
-void fatherData (string& dadOne, string& dadTwo, int& dadCheck); //second bit of user input gathered for the program for the fathers data
-void programCheck (int& programCompletion); //a check to see if the user wants to stop using the program, last bit of user input unless the user decides to continue
+void punnettDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck); //determined genotypes and phenotypes based off user inputs
+void motherData (string& momOne, string& momTwo, int& momCheck); //first bit of user input gathered for the program for the mothers' data
+void fatherData (string& dadOne, string& dadTwo, int& dadCheck); //second bit of user input gathered for the program for the father's data
+void programCheck (int& programCompletion); //a check to see if the user wants to stop using the program, last bit of user input, unless the user decides to continue
 
 int main()
 {
@@ -22,10 +22,10 @@ int main()
     cout << "| the parent's X chromosomes. |" << endl;
     cout << "-------------------------------\n" << endl;
 
-    while (programCompletion != 2)  //loops as long as the program completion value doesn't equal 2
-       motherData (momOne, momTwo, momCheck); //uses user input to determine the genotypes given by mother
-       fatherData (dadOne, dadTwo, dadCheck); //uses user input to determine the genotypes given by father
-       punnetDisplay (dadOne, dadTwo, momOne, momTwo, momCheck, dadCheck); //displays all data determined and gathered by the user for all possibilites for both genotypes and phenotypes
+    while (programCompletion != 2) { //loops as long as the program completion value isn't equal to 2
+       motherData (momOne, momTwo, momCheck); //uses user input to determine the genotypes given by the mother
+       fatherData (dadOne, dadTwo, dadCheck); //uses user input to determine the genotypes given by the father
+       punnettDisplay (dadOne, dadTwo, momOne, momTwo, momCheck, dadCheck); //displays all data determined and gathered by the user for all possibilities for both genotypes and phenotypes
        programCheck (programCompletion); //check if user wants to proceed with using the program again
     }
 }
@@ -72,7 +72,7 @@ void fatherData (string& dadOne, string& dadTwo, int& dadCheck) { //all determin
     }
 }
 
-void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck) { //only uses one punnet square to display data based off of determined data from user input
+void punnettDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck) { //only uses one punnett square to display data based off of determined data from user input
     cout << "\n       "<< dadOne<< "             " << dadTwo << "       " << endl;
     cout << "-------------------------------" << endl;
     cout << "|              |              |" << endl;
@@ -88,6 +88,7 @@ void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momT
     cout << "|              |              |" << endl;
     cout << "-------------------------------" << endl;
 
+    //displays different phenotype percentages dependent on user input
     if (momCheck == 1 && dadCheck == 1) {
         cout << "\nColorblind Male - 50%\n";
         cout << "Colorblind Female - 50%";
@@ -123,7 +124,7 @@ void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momT
     }
 }
 
-void programCheck (int& programCompletion) {
+void programCheck (int& programCompletion) { //checks if the user would like to run the program again or not, ends the program if they don't
     cout << "\n\nDo you want to use the program again?\n\n1 - Yes\n2 - No\n";
     cin >> programCompletion;
     while (!programCompletion or programCompletion > 2 or programCompletion < 1) {
@@ -133,6 +134,5 @@ void programCheck (int& programCompletion) {
         cin >> programCompletion;
     }
 }
-
 
 
