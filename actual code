@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//declaring all of the
+//declaring all of the functions being used throughout the program
 void punnettDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck); //determined genotypes and phenotypes based off user inputs
 void motherData (string& momOne, string& momTwo, int& momCheck); //first bit of user input gathered for the program for the mothers' data
 void fatherData (string& dadOne, string& dadTwo, int& dadCheck); //second bit of user input gathered for the program for the father's data
