@@ -2,17 +2,17 @@
 
 using namespace std;
 
-
-void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck);
-void motherData (string& momOne, string& momTwo, int& momCheck);
-void fatherData (string& dadOne, string& dadTwo, int& dadCheck);
-void programCheck (int& programCompletion);
+//declaring all of the
+void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck); //determined genotypes and phenotypes based off user inputs
+void motherData (string& momOne, string& momTwo, int& momCheck); //first bit of user input gathered for the program for the mothers data
+void fatherData (string& dadOne, string& dadTwo, int& dadCheck); //second bit of user input gathered for the program for the fathers data
+void programCheck (int& programCompletion); //a check to see if the user wants to stop using the program, last bit of user input unless the user decides to continue
 
 int main()
 {
     int dadCheck, momCheck, programCompletion;
     string momOne, momTwo, dadOne, dadTwo;
-    
+    //an intro explaining to users the use of the program and a simple explanation of the process
     cout << "-------------------------------" << endl;
     cout << "| This program will determine |" << endl;
     cout << "| the possibility of a childs |" << endl;
@@ -21,19 +21,19 @@ int main()
     cout << "| colorblindness is linked to |" << endl;
     cout << "| the parent's X chromosomes. |" << endl;
     cout << "-------------------------------\n" << endl;
-    
-    while (programCompletion != 2) {
-       motherData (momOne, momTwo, momCheck);
-       fatherData (dadOne, dadTwo, dadCheck);
-       punnetDisplay (dadOne, dadTwo, momOne, momTwo, momCheck, dadCheck);
-       programCheck (programCompletion); 
-    } 
+
+    while (programCompletion != 2)  //loops as long as the program completion value doesn't equal 2
+       motherData (momOne, momTwo, momCheck); //uses user input to determine the genotypes given by mother
+       fatherData (dadOne, dadTwo, dadCheck); //uses user input to determine the genotypes given by father
+       punnetDisplay (dadOne, dadTwo, momOne, momTwo, momCheck, dadCheck); //displays all data determined and gathered by the user for all possibilites for both genotypes and phenotypes
+       programCheck (programCompletion); //check if user wants to proceed with using the program again
+    }
 }
 
-void motherData (string& momOne, string& momTwo, int& momCheck) {
+void motherData (string& momOne, string& momTwo, int& momCheck) { //all determined data for the mother by user input
     cout << "Is the mother Colorblind, not Colorblind, or a Carrier?\n\n1 - Colorblind\n2 - Not Colorblind\n3 - Carrier\n";
     cin >> momCheck;
-    while (!momCheck or momCheck > 3 or momCheck < 1) { //invalid input/fail check for air temperature
+    while (!momCheck or momCheck > 3 or momCheck < 1) { //invalid input/fail check the mother's data
         cout << "Invalid input, please give the data for the mother.\n\n1 - Colorblind\n2 - Not Colorblind\n3 - Carrier\n";
         cin.clear();
         cin.ignore(10000, '\n');
@@ -51,13 +51,13 @@ void motherData (string& momOne, string& momTwo, int& momCheck) {
            momTwo ="Xa";
         }
     }
-    
+
 }
 
-void fatherData (string& dadOne, string& dadTwo, int& dadCheck) {
+void fatherData (string& dadOne, string& dadTwo, int& dadCheck) { //all determined data for the father by user input
     cout << "Is the father Colorblind or not?\n1 - Colorblind\n2 - Not Colorblind\n";
     cin >> dadCheck;
-    while (!dadCheck or dadCheck > 2 or dadCheck < 1) { //invalid input/fail check for air temperature
+    while (!dadCheck or dadCheck > 2 or dadCheck < 1) { //invalid input/fail check for the father's data
         cout << "Invalid input, please give the data for the father.\n\n1 - Colorblind\n2 - Not Colorblind\n";
         cin.clear();
         cin.ignore(10000, '\n');
@@ -72,7 +72,7 @@ void fatherData (string& dadOne, string& dadTwo, int& dadCheck) {
     }
 }
 
-void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck) {
+void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momTwo, int& momCheck, int& dadCheck) { //only uses one punnet square to display data based off of determined data from user input
     cout << "\n       "<< dadOne<< "             " << dadTwo << "       " << endl;
     cout << "-------------------------------" << endl;
     cout << "|              |              |" << endl;
@@ -87,7 +87,7 @@ void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momT
     cout << "|              |              |" << endl;
     cout << "|              |              |" << endl;
     cout << "-------------------------------" << endl;
-    
+
     if (momCheck == 1 && dadCheck == 1) {
         cout << "\nColorblind Male - 50%\n";
         cout << "Colorblind Female - 50%";
@@ -101,12 +101,12 @@ void punnetDisplay (string& dadOne, string& dadTwo, string& momOne, string& momT
                 cout << "Carrier Female - 50%";
             } else {
                 if (momCheck == 2 && dadCheck == 2) {
-                    cout << "\nNon-Colorblind Male - 50%\n";
-                    cout << "Non-Colorblind Female - 50%";
+                    cout << "\nNon-Colorblind Male - 50% \n";
+                    cout << "Non-Colorblind Female - 50% ";
                 } else {
                     if (momCheck == 3 && dadCheck == 1) {
                         cout << "\nNon-Colorblind Male - 25%";
-                        cout << "\nCarrier Female - 25%";
+                        cout << "\nCarrier Female - 25% ";
                         cout << "\nColorblind Male - 25%";
                         cout << "\nColorblind Female - 25%";
                     } else {
