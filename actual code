@@ -90,31 +90,45 @@ void punnettDisplay (string& dadOne, string& dadTwo, string& momOne, string& mom
 
     //displays different phenotype percentages dependent on user input
     if (momCheck == 1 && dadCheck == 1) {
-        cout << "\nColorblind Male - 50%\n";
-        cout << "Colorblind Female - 50%";
+        cout << "\nNon-Colorblind Male - 50%";
+        cout << "\nRegular Non-Colorblind Female - 0%";
+        cout << "\nCarrier Female = 0%";
+        cout << "\nColorblind Male - 50%";
+        cout << "\nColorblind Female - 50%";
     } else {
         if (momCheck == 1 && dadCheck == 2) {
-            cout << "\nColorblind Male - 50%\n";
+            cout << "\nNon-Colorblind Male - 0%";
+            cout << "\nRegular Non-Colorblind Female - 0%";
             cout << "Carrier Female - 50%";
+            cout << "\nColorblind Male - 50%\n";
+            cout << "\nColorblind Female - 0%";
         } else {
             if (momCheck == 2 && dadCheck == 1) {
-                cout << "\nNon-Colorblind Male - 50%\n";
-                cout << "Carrier Female - 50%";
+                cout << "\nNon-Colorblind Male - 50%";
+                cout << "\nRegular Non-Colorblind Female - 0%";
+                cout << "\nCarrier Female - 50%";
+                cout << "\nColorblind Male - 0%";
+                cout << "\nColorblind Female - 0%";
             } else {
                 if (momCheck == 2 && dadCheck == 2) {
-                    cout << "\nNon-Colorblind Male - 50% \n";
-                    cout << "Non-Colorblind Female - 50% ";
+                    cout << "\nNon-Colorblind Male - 50%";
+                    cout << "\nRegular Non-Colorblind Female - 50% ";
+                    cout << "\nCarrier Female - 0%";
+                    cout << "\nColorblind Male - 0%";
+                    cout << "\nColorblind Female - 0%";
                 } else {
                     if (momCheck == 3 && dadCheck == 1) {
                         cout << "\nNon-Colorblind Male - 25%";
+                        cout << "\nRegular Non-Colorblind Female - 0";
                         cout << "\nCarrier Female - 25% ";
                         cout << "\nColorblind Male - 25%";
                         cout << "\nColorblind Female - 25%";
                     } else {
                         if (momCheck == 3 && dadCheck == 2) {
                             cout << "\nNon-Colorblind Male - 25%";
-                            cout << "\nNon-Colorblind Female - 25%";
+                            cout << "\nRegular Non-Colorblind Female - 25%";
                             cout << "\nColorblind Male - 25%";
+                            cout << "\nColorblind Female - 0%";
                             cout << "\nCarrier Female - 25%";
                         }
                     }
@@ -128,11 +142,13 @@ void programCheck (int& programCompletion) { //checks if the user would like to 
     cout << "\n\nDo you want to use the program again?\n\n1 - Yes\n2 - No\n";
     cin >> programCompletion;
     while (!programCompletion or programCompletion > 2 or programCompletion < 1) {
-        cout << "Invalid Input. Would you like to use the program again?\n\n1 - Yes\n2 - No";
+        cout << "Invalid Input. Would you like to use the program again?\n\n1 - Yes\n2 - No\n";
         cin.clear();
         cin.ignore(10000, '\n');
         cin >> programCompletion;
     }
+    if (programCompletion == 1) {
+        cout << "\n----------------------------------------------------------------------------------------------------------\n";
+    }
 }
-
 
