@@ -148,7 +148,7 @@ void programCheck (int& programCompletion) { //checks if the user would like to 
         cin >> programCompletion;
     }
     if (programCompletion == 1) {
-        cout << "\n----------------------------------------------------------------------------------------------------------\n";
+        cout << "\n----------------------------------------------------------------------------------------------------------\n" << endl;
     }
 }
 
